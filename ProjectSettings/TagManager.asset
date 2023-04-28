@@ -7,6 +7,9 @@ TagManager:
   - KnightSwordTag
   - EnemyShotTag
   - AtackTimeUpGraderTag
+  - RoadTag
+  - MountainTag
+  - CloudTag
   layers:
   - Default
   - TransparentFX
