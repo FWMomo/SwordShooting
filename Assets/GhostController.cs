@@ -5,7 +5,7 @@ using UnityEngine;
 public class GhostController : MonoBehaviour
 {
     //Á‹ˆÊ’u
-    private float deadLine = -20;
+    private float deadLine = 25;
 
     //ˆÚ“®‘¬“x
     private float speed = -5;
@@ -43,12 +43,12 @@ public class GhostController : MonoBehaviour
             }
             if(count == 3)
             {
-                this.speed -= 5;
+                this.speed = 5;
             }
         }
 
         //‰æ–Ê’[‚ÅÁ‹
-        if (this.transform.position.x < deadLine)
+        if (this.transform.position.x > deadLine)
         {
             Destroy(gameObject);
         }

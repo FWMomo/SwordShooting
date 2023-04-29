@@ -1530,7 +1530,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2060537179}
-  - component: {fileID: 2060537178}
+  - component: {fileID: 2060537180}
   m_Layer: 0
   m_Name: EnemyGenelator
   m_TagString: Untagged
@@ -1538,21 +1538,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2060537178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2060537177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a80df744b0698cd4b8331aef104264bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  batPrefab: {fileID: 5104024992278707743, guid: e8a08c06c7d4405458f6e4071c71318e, type: 3}
-  ghostPrefab: {fileID: 2025774477354428221, guid: 06afae71a460c634d8e0659fdfc861fa, type: 3}
-  flyEyePrefab: {fileID: 2927667448380986652, guid: 8f31d0be64c7c18468770eb0006f9a7d, type: 3}
 --- !u!4 &2060537179
 Transform:
   m_ObjectHideFlags: 0
@@ -1568,3 +1553,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2060537180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060537177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a80df744b0698cd4b8331aef104264bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  batPrefab: {fileID: 5104024992278707743, guid: e8a08c06c7d4405458f6e4071c71318e, type: 3}
+  ghostPrefab: {fileID: 2025774477354428221, guid: 06afae71a460c634d8e0659fdfc861fa, type: 3}
+  flyEyePrefab: {fileID: 2927667448380986652, guid: 8f31d0be64c7c18468770eb0006f9a7d, type: 3}

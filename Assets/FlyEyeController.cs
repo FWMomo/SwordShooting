@@ -8,11 +8,9 @@ public class FlyEyeController : MonoBehaviour
     private float deadLine = -20;
     //移動速度
     private float speedX = -6;
-    private float speedY = 10;
+    private float speedY = 1;
     //敵の体力
     private int hp = 1;
-    //時間
-    private float time = 0; 
 
     // Start is called before the first frame update
     void Start()
@@ -23,10 +21,8 @@ public class FlyEyeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        //移動速度
-        this.transform.position = new Vector2(0,Mathf.Sin(Time.deltaTime * speedY));
-        this.transform.Translate(speedX, 0,0);
+            //移動速度);
+            this.transform.Translate(speedX * Time.deltaTime, speedY * Time.deltaTime, 0);
         //画面端で消去
         if (this.transform.position.x < deadLine)
         {
