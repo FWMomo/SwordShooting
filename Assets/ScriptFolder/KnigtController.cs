@@ -8,8 +8,6 @@ public class KnigtController : MonoBehaviour
     private Rigidbody2D myRigidbody;
     //時間取得
     private float time = 0;
-    //攻撃速度
-    private float atackTime = 0.5f;
     //HP設定
     private int hp = 1;
     //移動速度
@@ -21,18 +19,30 @@ public class KnigtController : MonoBehaviour
     //弾丸のプレハブ設定
 
     //弾丸の作成
+
+    //高威力・低レート・当たり判定大
     public GameObject knightSwordPrefab;
+    //攻撃速度
+    private float knightSwordAtackTime = 0.3f;
     //弾丸の速度
-    public float knightSwordVelocityX = 40;
+    private float knightSwordVelocityX = 20;
+
+    //低威力・高レート・当たり判定小
+    public GameObject knightKnifePrefab;
+    //攻撃速度
+    private float knightKnifeAtackTime = 0.1f;
+    //弾丸の速度
+    public float knightKnifeVelocityX = 40;
+    
+
 
     //GameOver用のテキスト
     GameObject gameOverText;
 
 
     //アイテム用
-
-    //AtackTimeUpGraderの攻撃速度上昇率
-    float atackTimeUpGradeRate = 0.8f;
+    private bool knightSword = true;
+    private bool knightKnife = false;
 
     // Start is called before the first frame update
     void Start()
@@ -90,18 +100,36 @@ public class KnigtController : MonoBehaviour
 
         //攻撃
         time += Time.deltaTime;
-        if (Input.GetMouseButtonDown(0) && time >= atackTime)
+
+        //KnightSword
+        if (knightSword && Input.GetMouseButton(0) && time >= knightSwordAtackTime)
         {
+            Debug.Log(knightSwordVelocityX);
             //弾の生成
             GameObject KnightSword = Instantiate(knightSwordPrefab);
             //弾の出現位置の調整
             KnightSword.transform.position = new Vector2(this.gameObject.transform.position.x + 0.4f, this.gameObject.transform.position.y - 0.5f);
             //弾に速度を与える
-            KnightSword.GetComponent<Rigidbody2D>().velocity = new Vector2(knightSwordVelocityX,0);
+            KnightSword.GetComponent<Rigidbody2D>().velocity = new Vector2(knightSwordVelocityX, 0);
             //timeをリセット
             time = 0;
         }
-        
+        //KnightKnife
+        else if (knightKnife && Input.GetMouseButton(0) && time >= knightKnifeAtackTime)
+        {
+            Debug.Log(knightKnifeVelocityX);
+            //弾の生成
+            GameObject KnightKnife = Instantiate(knightKnifePrefab);
+            //弾の出現位置の調整
+            KnightKnife.transform.position = new Vector2(this.gameObject.transform.position.x + 0.4f, this.gameObject.transform.position.y - 0.5f);
+            //弾に速度を与える
+            KnightKnife.GetComponent<Rigidbody2D>().velocity = new Vector2(knightKnifeVelocityX, 0);
+            //timeをリセット
+            time = 0;
+        }
+
+
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -112,15 +140,25 @@ public class KnigtController : MonoBehaviour
             this.hp -= 1;
             Destroy(other.gameObject);
         }
-        //攻撃速度上昇に衝突
-        if (other.gameObject.tag == "AtackTimeUpGraderTag")
+
+        //アイテム取得
+
+        //KnightSword取得
+        if (other.gameObject.tag == "ItemKnightSwordTag")
         {
-            this.atackTime *= atackTimeUpGradeRate;
+            this.knightSword = true;
+            this.knightKnife = false;
             Destroy(other.gameObject);
-            Debug.Log(atackTime);
         }
 
-        //HPがゼロになった時に対象を消す
+        //KnightKnife取得
+        if (other.gameObject.tag == "ItemKnightKnifeTag")
+        {
+            this.knightSword = false;
+            this.knightKnife = true;
+            Destroy(other.gameObject);
+        }
+
         if (hp <= 0)
         {
             Destroy(this.gameObject);

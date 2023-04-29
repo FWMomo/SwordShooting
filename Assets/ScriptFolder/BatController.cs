@@ -9,7 +9,7 @@ public class BatController : MonoBehaviour
     //ˆÚ“®‘¬“x
     private float speed = -6;
     //“G‚Ì‘Ì—Í
-    private int hp = 1;
+    private int hp = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,14 @@ public class BatController : MonoBehaviour
     //–¡•û‚Ì’e‚Æ‚ÌÚG”»’è
     void OnTriggerEnter2D(Collider2D other)
     {
+        //KnightSword‚ÉÚG‚µ‚½‚Ì”»’è
         if (other.gameObject.tag == "KnightSwordTag")
+        {
+            this.hp -= 2;
+            Destroy(other.gameObject);
+        }
+        //KnightKnife‚ÉÚG‚µ‚½‚Ì”»’è
+        if (other.gameObject.tag == "KnightKnifeTag")
         {
             this.hp -= 1;
             Destroy(other.gameObject);

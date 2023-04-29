@@ -51,7 +51,6 @@ public class EnemyGenelator : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             GameObject FlyEyePrefab = Instantiate(flyEyePrefab);
-            Debug.Log(100);
             FlyEyePrefab.transform.position = new Vector2(20, -4 - 4 * i);
         }
         yield return new WaitForSeconds(1);
@@ -59,8 +58,7 @@ public class EnemyGenelator : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             GameObject FlyEyePrefab = Instantiate(flyEyePrefab);
-            Debug.Log(100);
-            FlyEyePrefab.transform.position = new Vector2(20,  -4 - 4 * i);
+            FlyEyePrefab.transform.position = new Vector2(20,   - 4 * i);
         }
         yield return new WaitForSeconds(1);
 

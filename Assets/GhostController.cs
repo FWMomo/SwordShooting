@@ -14,7 +14,9 @@ public class GhostController : MonoBehaviour
     //UŒ‚Ši”[
     public GameObject enemyAtackPrefab;
     //UŒ‚ŠÔŠu
-    private float atackTime = 0;
+    private float atackTime = 2.3f;
+    //ŠÔ
+    private float time = 0;
     //ƒJƒEƒ“ƒg
     int count = 0;
 
@@ -34,11 +36,11 @@ public class GhostController : MonoBehaviour
         {
             this.speed = 0;
             //UŒ‚O‰ñŒJ‚è•Ô‚·
-            atackTime += Time.deltaTime;
-            if (atackTime >= 2.3 &&@count < 3)
+            time += Time.deltaTime;
+            if (time >= atackTime &&@count < 3)
             {
-                GameObject EnemyAtackPrefab = Instantiate(enemyAtackPrefab, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
-                atackTime = 0;
+                GameObject EnemyAtackPrefab = Instantiate(enemyAtackPrefab);
+                EnemyAtackPrefab.transform.position = new Vector2(this.transform.position.x, this.transform.position.y);
                 count++;
             }
             if(count == 3)
