@@ -244,7 +244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64121465}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.4260962, y: -1.9209363, z: 0.38379464}
+  m_LocalPosition: {x: -26.94, y: -1.52, z: 0.38379464}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1552,6 +1552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   batPrefab: {fileID: 5104024992278707743, guid: e8a08c06c7d4405458f6e4071c71318e, type: 3}
   ghostPrefab: {fileID: 2025774477354428221, guid: 06afae71a460c634d8e0659fdfc861fa, type: 3}
+  flyEyePrefab: {fileID: 2927667448380986652, guid: 8f31d0be64c7c18468770eb0006f9a7d, type: 3}
 --- !u!4 &2060537179
 Transform:
   m_ObjectHideFlags: 0

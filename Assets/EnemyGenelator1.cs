@@ -2,74 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGenelator1 : MonoBehaviour
+public class EnemyGenelator : MonoBehaviour
 {
-    //ŽžŠÔŠi”[
-    private float time = 0;
-    //ƒJƒEƒ“ƒg—p
-    private int count = 0;
-
     //ƒvƒŒƒnƒuŠi”[
     public GameObject batPrefab;
     public GameObject ghostPrefab;
-
-
+    public GameObject flyEyePrefab;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        StartCoroutine("Genelator");
     }
 
     // Update is called once per frame
     void Update()
     {
-        //time‚ÅŽžŠÔ‚ð‘ª‚é
-        time += Time.deltaTime;
-        //“G¶¬
 
-        //Bat‚ðŒÜ‘Ì¶¬
-        if (time >= 0 && count == 0)
+    }
+
+    IEnumerator Genelator()
+    {
+        Debug.Log(11111);
+        for (int i = 0; i < 5; i++)
         {
-            Debug.Log(1);
-            for(int i = 0; i < 5; i++)
-            {
+            GameObject BatPrefab = Instantiate(batPrefab);
+            BatPrefab.transform.position = new Vector2(20 + i * 2, 0);
+        }
+        yield return new WaitForSeconds(3);
+
+        for (int i = 0; i < 5; i++)
+        {
             GameObject BatPrefab = Instantiate(batPrefab);
             Debug.Log(2);
-            BatPrefab.transform.position = new Vector2(20 + i * 2, 0);
-            }
-            count++;
+            BatPrefab.transform.position = new Vector2(20 + i * 2, 4);
         }
+        yield return new WaitForSeconds(3);
 
-        //Bat‚ðŒÜ‘Ì¶¬
-        if (time >= 5 && count == 1)
+        for (int i = 0; i < 2; i++)
         {
-            Debug.Log(1);
-            for (int i = 0; i < 5; i++)
-            {
-                GameObject BatPrefab = Instantiate(batPrefab);
-                Debug.Log(2);
-                BatPrefab.transform.position = new Vector2(20 + i * 2, 4);
-            }
-            count++;
+            GameObject GhostPrefab = Instantiate(ghostPrefab);
+            Debug.Log(2);
+            GhostPrefab.transform.position = new Vector2(20, -4 - 4 * i);
         }
+        yield return new WaitForSeconds(3);
 
-        //Ghost‚ð“ñ‘Ì¶¬
-        if (time >= 10 && count == 2)
+        for (int i = 0; i < 2; i++)
         {
-            Debug.Log(1);
-            for (int i = 0; i < 2; i++)
-            {
-                GameObject GhostPrefab = Instantiate(ghostPrefab);
-                Debug.Log(2);
-                GhostPrefab.transform.position = new Vector2(20, -4 - 4 * i);
-            }
-            count++;
+            GameObject FlyEyePrefab = Instantiate(flyEyePrefab);
+            Debug.Log(2);
+            flyEyePrefab.transform.position = new Vector2(20, -4 - 4 * i);
         }
-
-
-
-
-
+        yield return new WaitForSeconds(3);
     }
 }

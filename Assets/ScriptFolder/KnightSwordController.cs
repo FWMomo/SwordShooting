@@ -5,7 +5,7 @@ using UnityEngine;
 public class KnightSwordController : MonoBehaviour
 {
     //è¡ãéà íu
-    private float deadLine = -20;
+    private float deadLine = 20;
 
     //âÒì]
     private float rotSpeed = -2f;
@@ -20,7 +20,7 @@ public class KnightSwordController : MonoBehaviour
     {
         this.transform.Rotate(0, 0, this.rotSpeed);
         
-        if (this.transform.position.x < deadLine)
+        if (this.transform.position.x > deadLine)
         {
             Destroy(gameObject);
         }

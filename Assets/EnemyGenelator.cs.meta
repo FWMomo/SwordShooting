@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a80df744b0698cd4b8331aef104264bb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - batPrefab: {fileID: 5104024992278707743, guid: e8a08c06c7d4405458f6e4071c71318e, type: 3}
+  - ghostPrefab: {fileID: 2025774477354428221, guid: 06afae71a460c634d8e0659fdfc861fa, type: 3}
+  - flyEyePrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

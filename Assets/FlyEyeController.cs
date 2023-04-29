@@ -2,27 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BatController : MonoBehaviour
+public class FlyEyeController : MonoBehaviour
 {
     //消去位置
     private float deadLine = -20;
     //移動速度
-    private float speed = -6;
+    private float speedX = -6;
+    private float speedY = 10;
     //敵の体力
     private int hp = 1;
+    //時間
+    private float time = 0; 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
         //移動速度
-        transform.Translate(this.speed * Time.deltaTime, 0, 0);
-
+        this.transform.position = new Vector2(0,Mathf.Sin(Time.deltaTime * speedY));
+        this.transform.Translate(speedX, 0,0);
         //画面端で消去
         if (this.transform.position.x < deadLine)
         {
