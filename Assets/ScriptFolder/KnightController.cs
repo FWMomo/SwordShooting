@@ -10,6 +10,8 @@ public class KnightController : MonoBehaviour
     private float time = 0;
     //HP設定
     private int hp = 1;
+    //残機
+    public int life = 1;
     //移動速度
     private float velocity = 6F;
     //これに移動速度を入れる
@@ -53,6 +55,7 @@ public class KnightController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(life);
         this.myRigidbody = GetComponent<Rigidbody2D>();
         gameOverText = GameObject.Find("GameOverText");
     }
@@ -168,6 +171,7 @@ public class KnightController : MonoBehaviour
 
         if (hp <= 0)
         {
+            life--;
             Destroy(this.gameObject);
             gameOverText.GetComponent<Text>().text = "GameOver";
         }

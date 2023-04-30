@@ -11,11 +11,12 @@ public class EnergyController : MonoBehaviour
     //KnightControllerを取得
     public GameObject knight;
     //現在のレベルを格納
-    private int playerLevel = 1;
+    public int playerLevel = 1;
 
     // Start is called before the first frame update
     void Start()
     {
+
         knight = GameObject.Find("Knight");
     }
 
@@ -33,6 +34,7 @@ public class EnergyController : MonoBehaviour
         {
             //プレイヤーのレベルを上げて攻撃力を増加させる
             knight.GetComponent<KnightController>().powerUpGradeRate ++;
+            playerLevel++;
             chargeRate /= chargeRateUp;
             this.transform.position = new Vector2(-4, this.transform.position.y);
 
