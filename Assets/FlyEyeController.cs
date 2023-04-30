@@ -19,10 +19,19 @@ public class FlyEyeController : MonoBehaviour
     private float time = 0;
     //‰Œ‚‚Ü‚Å‚ÌŠÔ
     private float firstAtackTime = 0.4f;
+
+    //•KE‹Z—p
+    GameObject energy;
+    //•KE‹Zƒ`ƒƒ[ƒW—¦
+    private int point = 1;
+
     // Start is called before the first frame update
     void Start()
     {
+        //‰Œ‚‚Ü‚Å‚ÌŠÔ
         firstAtackTime += atackTime;
+
+        energy = GameObject.Find("Energy");
     }
 
     // Update is called once per frame
@@ -65,8 +74,8 @@ public class FlyEyeController : MonoBehaviour
         //HP‚ªƒ[ƒ‚É‚È‚Á‚½‚É‘ÎÛ‚ğÁ‚·
         if (hp <= 0)
         {
+            energy.GetComponent<EnergyController>().EnergyCharger(point);
             Destroy(this.gameObject);
         }
     }
-
 }
