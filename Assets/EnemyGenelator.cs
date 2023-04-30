@@ -62,5 +62,34 @@ public class EnemyGenelator : MonoBehaviour
         }
         yield return new WaitForSeconds(1);
 
+        //test
+        //Bat‚ğŒÜ‘Ì¶¬
+        for (int i = 0; i < 5; i++)
+        {
+            GameObject BatPrefab = Instantiate(batPrefab);
+            BatPrefab.transform.position = new Vector2(20 + i * 2, 0);
+        }
+        yield return new WaitForSeconds(1);
+        //Bat‚ğŒÜ‘Ì¶¬
+        for (int i = 0; i < 5; i++)
+        {
+            GameObject BatPrefab = Instantiate(batPrefab);
+            BatPrefab.transform.position = new Vector2(20 + i * 2, 0);
+        }
+        yield return new WaitForSeconds(1);
+        //Bat‚ğŒÜ‘Ì¶¬
+        for (int i = 0; i < 5; i++)
+        {
+            GameObject BatPrefab = Instantiate(batPrefab);
+            BatPrefab.transform.position = new Vector2(20 + i * 2, 0);
+        }
+        yield return new WaitForSeconds(1);
+        //Bat‚ğŒÜ‘Ì¶¬
+        for (int i = 0; i < 5; i++)
+        {
+            GameObject BatPrefab = Instantiate(batPrefab);
+            BatPrefab.transform.position = new Vector2(20 + i * 2, 0);
+        }
+        yield return new WaitForSeconds(1);
     }
 }

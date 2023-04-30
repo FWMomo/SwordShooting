@@ -387,12 +387,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b26906bd7aeb8554aa8743023c07c001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpGradeRate: 1
   knightSwordPrefab: {fileID: 1094361354467315018, guid: 5b545798c9825914e82fb0c2f1fc7b5d, type: 3}
   knightSwordPower: 3
   knightKnifePrefab: {fileID: 7346819365871565148, guid: c6dd2eb687eca764dbf8351159ba2a16, type: 3}
   knightKnifeVelocityX: 0
   knightKnifePower: 1
-  knightSword: 1
+  knightSword: 0
   knightKnife: 0
 --- !u!1 &199019616
 GameObject:
@@ -1513,6 +1514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f206e4600dce6439c7059e08076591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knight: {fileID: 0}
 --- !u!1 &1688156039
 GameObject:
   m_ObjectHideFlags: 0

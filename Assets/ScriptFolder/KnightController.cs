@@ -15,6 +15,8 @@ public class KnightController : MonoBehaviour
     //これに移動速度を入れる
     private float velocityX = 0;
     private float velocityY = 0;
+    //攻撃力増加割合
+    public int powerUpGradeRate = 1;
 
     //弾丸のプレハブ設定
 
@@ -53,7 +55,11 @@ public class KnightController : MonoBehaviour
     {
         this.myRigidbody = GetComponent<Rigidbody2D>();
         gameOverText = GameObject.Find("GameOverText");
-
+        //レベルアップによる攻撃力増加割合
+        knightSwordPower = powerUpGradeRate;
+        knightKnifePower *= powerUpGradeRate;
+        Debug.Log(knightKnifePower);
+        Debug.Log(powerUpGradeRate);
     }
 
     // Update is called once per frame
