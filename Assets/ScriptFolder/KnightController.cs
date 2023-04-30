@@ -55,17 +55,11 @@ public class KnightController : MonoBehaviour
     {
         this.myRigidbody = GetComponent<Rigidbody2D>();
         gameOverText = GameObject.Find("GameOverText");
-        //レベルアップによる攻撃力増加割合
-        knightSwordPower = powerUpGradeRate;
-        knightKnifePower *= powerUpGradeRate;
-        Debug.Log(knightKnifePower);
-        Debug.Log(powerUpGradeRate);
     }
 
     // Update is called once per frame
     void Update()
     {
-
         //移動
         this.myRigidbody.velocity = new Vector2(velocityX, velocityY);
   
@@ -114,7 +108,8 @@ public class KnightController : MonoBehaviour
         //KnightSword
         if (knightSword && Input.GetMouseButton(0) && time >= knightSwordAtackTime)
         {
-            Debug.Log(knightSwordVelocityX);
+            //撃つたびにパワーをアップデート
+            knightSwordPower = 3 * powerUpGradeRate;
             //弾の生成
             GameObject KnightSword = Instantiate(knightSwordPrefab);
             //弾の出現位置の調整
@@ -127,8 +122,9 @@ public class KnightController : MonoBehaviour
         //KnightKnife
         else if (knightKnife && Input.GetMouseButton(0) && time >= knightKnifeAtackTime)
         {
-            knightKnifeVelocityX = 40;
-            Debug.Log(knightKnifeVelocityX);
+            //撃つたびにパワーをアップデート
+            knightKnifePower = 1 * powerUpGradeRate;
+            Debug.Log(knightKnifePower);
             //弾の生成
             GameObject KnightKnife = Instantiate(knightKnifePrefab);
             //弾の出現位置の調整

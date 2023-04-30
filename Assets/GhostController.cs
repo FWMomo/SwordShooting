@@ -75,12 +75,17 @@ public class GhostController : MonoBehaviour
         //KnightSword‚ÉÚG‚µ‚½‚Ì”»’è
         if (other.gameObject.tag == "KnightSwordTag")
         {
+            //”í’e‚Ì“xUŒ‚—Í‚ğ‘ª‚é
+            this.knightSwordPower = knight.GetComponent<KnightController>().knightSwordPower;
+
             this.hp -= this.knightSwordPower;
             Destroy(other.gameObject);
         }
         //KnightKnife‚ÉÚG‚µ‚½‚Ì”»’è
         if (other.gameObject.tag == "KnightKnifeTag")
         {
+            //”í’e‚Ì“xUŒ‚—Í‚ğ‘ª‚é
+            this.knightKnifePower = knight.GetComponent<KnightController>().knightKnifePower;
             this.hp -= this.knightKnifePower;
             Destroy(other.gameObject);
         }

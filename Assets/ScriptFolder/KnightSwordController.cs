@@ -8,7 +8,7 @@ public class KnightSwordController : MonoBehaviour
     private float deadLine = 20;
 
     //‰ñ“]
-    private float rotSpeed = -2f;
+    private float rotSpeed = -10f;
     // Start is called before the first frame update
     void Start()
     {

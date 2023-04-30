@@ -14,8 +14,8 @@ public class BatController : MonoBehaviour
     GameObject energy;
     //•KE‹Zƒ`ƒƒ[ƒW—¦
     private int point = 1;
-    //KnightController‚©‚çŒ»İ‚ÌUŒ‚—Í‚ğæ“¾‚·‚é‚½‚ß
-    GameObject knight;
+    //Œ•‚ÌUŒ‚—Í‚ğŠi”[
+    public GameObject knight;
     private int knightSwordPower;
     private int knightKnifePower;
 
@@ -25,8 +25,6 @@ public class BatController : MonoBehaviour
         energy = GameObject.Find("Energy");
         //Œ•‚ÌUŒ‚—Í‚ğæ“¾
         knight = GameObject.Find("Knight");
-        this.knightSwordPower = knight.GetComponent<KnightController>().knightSwordPower;
-        this.knightKnifePower = knight.GetComponent<KnightController>().knightKnifePower;
 
     }
 
@@ -56,12 +54,18 @@ public class BatController : MonoBehaviour
         //KnightSword‚ÉÚG‚µ‚½‚Ì”»’è
         if (other.gameObject.tag == "KnightSwordTag")
         {
+            //”í’e‚Ì“xUŒ‚—Í‚ğ‘ª‚é
+            this.knightSwordPower = knight.GetComponent<KnightController>().knightSwordPower;
+
             this.hp -= this.knightSwordPower;
             Destroy(other.gameObject);
         }
         //KnightKnife‚ÉÚG‚µ‚½‚Ì”»’è
         if (other.gameObject.tag == "KnightKnifeTag")
         {
+            //”í’e‚Ì“xUŒ‚—Í‚ğ‘ª‚é
+            this.knightKnifePower = knight.GetComponent<KnightController>().knightKnifePower;
+
             this.hp -= this.knightKnifePower;
             Destroy(other.gameObject);
         }

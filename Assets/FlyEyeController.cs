@@ -24,6 +24,10 @@ public class FlyEyeController : MonoBehaviour
     GameObject energy;
     //•KE‹Zƒ`ƒƒ[ƒW—¦
     private int point = 1;
+    //Œ•‚ÌUŒ‚—Í‚ğŠi”[
+    public GameObject knight;
+    private int knightSwordPower;
+    private int knightKnifePower;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +36,10 @@ public class FlyEyeController : MonoBehaviour
         firstAtackTime += atackTime;
 
         energy = GameObject.Find("Energy");
+        //Œ•‚ÌUŒ‚—Í‚ğæ“¾
+        knight = GameObject.Find("Knight");
+        this.knightSwordPower = knight.GetComponent<KnightController>().knightSwordPower;
+        this.knightKnifePower = knight.GetComponent<KnightController>().knightKnifePower;
     }
 
     // Update is called once per frame
@@ -62,13 +70,19 @@ public class FlyEyeController : MonoBehaviour
         //KnightSword‚ÉÚG‚µ‚½‚Ì”»’è
         if (other.gameObject.tag == "KnightSwordTag")
         {
-            this.hp -= 1;
+            //”í’e‚Ì“xUŒ‚—Í‚ğ‘ª‚é
+            this.knightSwordPower = knight.GetComponent<KnightController>().knightSwordPower;
+
+            this.hp -= this.knightSwordPower;
             Destroy(other.gameObject);
         }
         //KnightKnife‚ÉÚG‚µ‚½‚Ì”»’è
         if (other.gameObject.tag == "KnightKnifeTag")
         {
-            this.hp -= 1;
+            //”í’e‚Ì“xUŒ‚—Í‚ğ‘ª‚é
+            this.knightKnifePower = knight.GetComponent<KnightController>().knightKnifePower;
+
+            this.hp -= this.knightKnifePower;
             Destroy(other.gameObject);
         }
         //HP‚ªƒ[ƒ‚É‚È‚Á‚½‚É‘ÎÛ‚ğÁ‚·
