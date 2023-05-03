@@ -8,6 +8,8 @@ public class EnemyGenelator : MonoBehaviour
     public GameObject batPrefab;
     public GameObject ghostPrefab;
     public GameObject flyEyePrefab;
+    public GameObject ghostPrefab2;
+    public GameObject skeltonPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -27,19 +29,49 @@ public class EnemyGenelator : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             GameObject BatPrefab = Instantiate(batPrefab);
-            BatPrefab.transform.position = new Vector2(20 + i * 2, 0);
+            BatPrefab.transform.position = new Vector2(20 + i * 2, 4);
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(4);
 
         //Bat‚ðŒÜ‘Ì¶¬
         for (int i = 0; i < 5; i++)
         {
             GameObject BatPrefab = Instantiate(batPrefab);
-            BatPrefab.transform.position = new Vector2(20 + i * 2, 4);
+            BatPrefab.transform.position = new Vector2(20 + i * 2, 0);
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(4);
 
-        //Ghost‚ð“ñ‘Ì¶¬
+        //Bat‚ðŒÜ‘Ì¶¬
+        for (int i = 0; i < 5; i++)
+        {
+            GameObject BatPrefab = Instantiate(batPrefab);
+            BatPrefab.transform.position = new Vector2(20 + i * 2, -4);
+        }
+        yield return new WaitForSeconds(4);
+
+        //FlyEye‚ð“ñ‘Ì¶¬
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject FlyEyePrefab = Instantiate(flyEyePrefab);
+            FlyEyePrefab.transform.position = new Vector2(20 + i * 2, 2 - 4 * i);
+        }
+        yield return new WaitForSeconds(3);
+
+        //Ghost2‚ð3‘Ì¶¬
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject GhostPrefab2 = Instantiate(ghostPrefab2);
+            GhostPrefab2.transform.position = new Vector2(20 + i * 3,0);
+            yield return new WaitForSeconds(0.7f);
+        }
+        yield return new WaitForSeconds(3);
+
+        //skelton‚ðˆê‘Ì¶¬
+        GameObject SkeltonPrefab = Instantiate(skeltonPrefab);
+        SkeltonPrefab.transform.position = new Vector2(23,-2);
+        yield return new WaitForSeconds(3);
+        /*
+         * //Ghost‚ð“ñ‘Ì¶¬
         for (int i = 0; i < 2; i++)
         {
             GameObject GhostPrefab = Instantiate(ghostPrefab);
@@ -90,6 +122,35 @@ public class EnemyGenelator : MonoBehaviour
             GameObject BatPrefab = Instantiate(batPrefab);
             BatPrefab.transform.position = new Vector2(20 + i * 2, 0);
         }
+        yield return new WaitForSeconds(2);
+        //FlyEye‚ð“ñ‘Ì¶¬
+        for (int i = 0; i < 2; i++)
+        {
+            GameObject FlyEyePrefab = Instantiate(flyEyePrefab);
+            FlyEyePrefab.transform.position = new Vector2(20, -3 * i);
+        }
+        yield return new WaitForSeconds(2);
+        //FlyEye‚ð“ñ‘Ì¶¬
+        for (int i = 0; i < 2; i++)
+        {
+            GameObject FlyEyePrefab = Instantiate(flyEyePrefab);
+            FlyEyePrefab.transform.position = new Vector2(20, -3 * i);
+        }
         yield return new WaitForSeconds(1);
+        //Ghost‚ð4‘Ì¶¬
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject GhostPrefab = Instantiate(ghostPrefab);
+            GhostPrefab.transform.position = new Vector2(20,  2 * i);
+        }
+        yield return new WaitForSeconds(1);
+
+                //flyeye‚ð•À—ñ‚Å3‘Ì¶¬
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject FlyEyePrefab = Instantiate(flyEyePrefab);
+            FlyEyePrefab.transform.position = new Vector2(20 + i * 3,0);
+        }
+        */
     }
 }

@@ -20,7 +20,7 @@ public class FlyEyeController : MonoBehaviour
     //初撃までの時間
     private float firstAtackTime = 0.4f;
 
-    //必殺技用
+
     GameObject energy;
     //必殺技チャージ率
     private int point = 1;

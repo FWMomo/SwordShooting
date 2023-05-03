@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BatController : MonoBehaviour
+public class GhostController2 : MonoBehaviour
 {
     //Á‹ˆÊ’u
     private float deadLine = -20;
     //ˆÚ“®‘¬“x
-    private float speed = -6;
+    private float f = 1 / 1.3f;
+    private float speedRate = -10;
+    private float speedX = 0;
+    private float speedY = 0;
     //“G‚Ì‘Ì—Í
     private int hp = 2;
     //•KE‹Z—p;
@@ -18,6 +21,8 @@ public class BatController : MonoBehaviour
     public GameObject knight;
     private int knightSwordPower;
     private int knightKnifePower;
+    //
+    private float time = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -31,9 +36,11 @@ public class BatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
+        speedX = 20 + speedRate * time;
+        speedY = 2 * Mathf.Sin(2 * Mathf.PI * f * time);
         //ˆÚ“®‘¬“x
-        transform.Translate(this.speed * Time.deltaTime, 0, 0);
-
+        this.transform.position = new Vector3(speedX, speedY, 0);
         //‰æ–Ê’[‚ÅÁ‹
         if (this.transform.position.x < deadLine)
         {
@@ -50,7 +57,7 @@ public class BatController : MonoBehaviour
     //–¡•û‚Ì’e‚Æ‚ÌÚG”»’è
     void OnTriggerEnter2D(Collider2D other)
     {
-        
+
         //KnightSword‚ÉÚG‚µ‚½‚Ì”»’è
         if (other.gameObject.tag == "KnightSwordTag")
         {
@@ -75,6 +82,7 @@ public class BatController : MonoBehaviour
             energy.GetComponent<EnergyController>().EnergyCharger(point);
             Destroy(this.gameObject);
         }
-        
+
     }
+
 }

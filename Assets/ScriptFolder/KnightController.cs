@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public class KnightController : MonoBehaviour
 {
+
+    //audio
+    public AudioSource audioSE;
+    public AudioClip a1;
+    public AudioClip a2;
+
+
     private Rigidbody2D myRigidbody;
     //éûä‘éÊìæ
     private float time = 0;
@@ -38,7 +45,7 @@ public class KnightController : MonoBehaviour
     //çUåÇë¨ìx
     private float knightKnifeAtackTime = 0.1f;
     //íeä€ÇÃë¨ìx
-    public float knightKnifeVelocityX = 40;
+    private float knightKnifeVelocityX = 40;
     //íeä€ÇÃçUåÇóÕ
     public int knightKnifePower = 1;
 
@@ -55,7 +62,7 @@ public class KnightController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(life);
+
         this.myRigidbody = GetComponent<Rigidbody2D>();
         gameOverText = GameObject.Find("GameOverText");
     }
