@@ -9,15 +9,15 @@ public class BatController : MonoBehaviour
     //ˆÚ“®‘¬“x
     private float speed = -6;
     //“G‚Ì‘Ì—Í
-    private int hp = 2;
+    private float hp = 2;
     //•KE‹Z—p;
     GameObject energy;
     //•KE‹Zƒ`ƒƒ[ƒW—¦
     private int point = 1;
     //Œ•‚ÌUŒ‚—Í‚ğŠi”[
     public GameObject knight;
-    private int knightSwordPower;
-    private int knightKnifePower;
+    private float knightSwordPower;
+    private float knightKnifePower;
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +56,6 @@ public class BatController : MonoBehaviour
         {
             //”í’e‚Ì“xUŒ‚—Í‚ğ‘ª‚é
             this.knightSwordPower = knight.GetComponent<KnightController>().knightSwordPower;
-
             this.hp -= this.knightSwordPower;
             Destroy(other.gameObject);
         }
@@ -65,7 +64,6 @@ public class BatController : MonoBehaviour
         {
             //”í’e‚Ì“xUŒ‚—Í‚ğ‘ª‚é
             this.knightKnifePower = knight.GetComponent<KnightController>().knightKnifePower;
-
             this.hp -= this.knightKnifePower;
             Destroy(other.gameObject);
         }

@@ -10,7 +10,7 @@ public class GhostController : MonoBehaviour
     //ˆÚ“®‘¬“x
     private float speed = -5;
     //“G‚Ì‘Ì—Í
-    private int hp = 1;
+    private float hp = 3;
     //UŒ‚Ši”[
     public GameObject enemyAtackPrefab;
     //UŒ‚ŠÔŠu
@@ -23,11 +23,11 @@ public class GhostController : MonoBehaviour
     //•KE‹Z—p
     GameObject energy;
     //•KE‹Zƒ`ƒƒ[ƒW—¦
-    private int point = 1;
+    private int point = 2;
     //Œ•‚ÌUŒ‚—Í‚ğŠi”[
     public GameObject knight;
-    private int knightSwordPower;
-    private int knightKnifePower;
+    private float knightSwordPower;
+    private float knightKnifePower;
 
     // Start is called before the first frame update
     void Start()

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6544899103650600194}
   - component: {fileID: 5773815149100277682}
   m_Layer: 0
-  m_Name: GhostPrefab2
+  m_Name: Ghost2Prefab
   m_TagString: EnemyShotTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyShotController2 : MonoBehaviour
 {
-    private float speed = -10;
+    public float speedX = 0;
     private float deadLine = -20;
     public float numY = 0;
     public float speedY = 0;
@@ -18,15 +18,18 @@ public class EnemyShotController2 : MonoBehaviour
     void Update()
     {
         //ˆÚ“®‘¬“x
-        transform.Translate(this.speed * Time.deltaTime, this.speedY * Time.deltaTime , 0);
+        transform.Translate(this.speedX * Time.deltaTime, this.speedY * Time.deltaTime , 0);
         //‰æ–Ê’[‚És‚Á‚½‚çÁ‹
         if (this.transform.position.x < deadLine)
         {
             Destroy(gameObject);
         }
     }
-    public void SetY(float speedY)
+
+    //‚™²‚ÌŒX‚«‚ğŒˆ’è
+    public void SetSpeed(float speedX, float speedY)
     {
+        this.speedX = speedX;
         this.speedY = speedY;
     }
 

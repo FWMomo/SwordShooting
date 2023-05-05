@@ -8,8 +8,12 @@ public class EnemyGenelator : MonoBehaviour
     public GameObject batPrefab;
     public GameObject ghostPrefab;
     public GameObject flyEyePrefab;
-    public GameObject ghostPrefab2;
+    public GameObject ghost2Prefab;
     public GameObject skeltonPrefab;
+    public GameObject flyEye2Prefab;
+    public GameObject slimeBossPrefab;
+
+    int random = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -60,8 +64,29 @@ public class EnemyGenelator : MonoBehaviour
         //Ghost2‚ğ3‘Ì¶¬
         for (int i = 0; i < 3; i++)
         {
-            GameObject GhostPrefab2 = Instantiate(ghostPrefab2);
-            GhostPrefab2.transform.position = new Vector2(20 + i * 3,0);
+            GameObject Ghost2Prefab = Instantiate(ghost2Prefab);
+            Ghost2Prefab.transform.position = new Vector2(20, 0);
+            Ghost2Prefab.GetComponent<GhostController2>().Position(20, 4);
+            yield return new WaitForSeconds(0.7f);
+        }
+        yield return new WaitForSeconds(1.5f);
+
+        //Ghost2‚ğ3‘Ì¶¬
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject Ghost2Prefab = Instantiate(ghost2Prefab);
+            Ghost2Prefab.transform.position = new Vector2(20, 0);
+            Ghost2Prefab.GetComponent<GhostController2>().Position(20, 0);
+            yield return new WaitForSeconds(0.7f);
+        }
+        yield return new WaitForSeconds(1.5f);
+
+        //Ghost2‚ğ3‘Ì¶¬
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject Ghost2Prefab = Instantiate(ghost2Prefab);
+            Ghost2Prefab.transform.position = new Vector2(20, 0);
+            Ghost2Prefab.GetComponent<GhostController2>().Position(20, -4);
             yield return new WaitForSeconds(0.7f);
         }
         yield return new WaitForSeconds(3);
@@ -69,7 +94,154 @@ public class EnemyGenelator : MonoBehaviour
         //skelton‚ğˆê‘Ì¶¬
         GameObject SkeltonPrefab = Instantiate(skeltonPrefab);
         SkeltonPrefab.transform.position = new Vector2(23,-2);
+        yield return new WaitForSeconds(2);
+
+        //Bat‚ğ3‘Ì¶¬
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject BatPrefab = Instantiate(batPrefab);
+            BatPrefab.transform.position = new Vector2(20 + i * 2, 5);
+        }
+        yield return new WaitForSeconds(2);
+
+        //FlyEye2‚ğ4‘Ì¶¬
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject FlyEye2Prefab = Instantiate(flyEye2Prefab);
+            FlyEye2Prefab.transform.position = new Vector2(20 + i * 2, 8);
+        }
+        yield return new WaitForSeconds(4);
+
+        //Bat‚ğ3‘Ì¶¬
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject BatPrefab = Instantiate(batPrefab);
+            BatPrefab.transform.position = new Vector2(20 + i * 2, 0);
+        }
         yield return new WaitForSeconds(3);
+
+        //FlyEye‚ğ4‘Ì¶¬
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject FlyEyePrefab = Instantiate(flyEyePrefab);
+            FlyEyePrefab.transform.position = new Vector2(20 + i * 2,i);
+        }
+        yield return new WaitForSeconds(3);
+
+        //FlyEye‚ğ4‘Ì¶¬
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject FlyEyePrefab = Instantiate(flyEyePrefab);
+            FlyEyePrefab.transform.position = new Vector2(20 + i * 2, -4 + i);
+        }
+        yield return new WaitForSeconds(3);
+
+        //Bat‚ğ10‘Ì¶¬
+        for (int i = 0; i < 10; i++)
+        {
+            GameObject BatPrefab = Instantiate(batPrefab);
+            BatPrefab.transform.position = new Vector2(20 + i * 2,5 + 0.5f * i);
+        }
+
+        //Bat‚ğ10‘Ì¶¬
+        for (int i = 0; i < 10; i++)
+        {
+            GameObject BatPrefab = Instantiate(batPrefab);
+            BatPrefab.transform.position = new Vector2(20 + i * 2,-5 -0.5f * i);
+        }
+        yield return new WaitForSeconds(2);
+
+        //Ghost2‚ğ3‘Ì¶¬
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject Ghost2Prefab = Instantiate(ghost2Prefab);
+            Ghost2Prefab.transform.position = new Vector2(20, 0);
+            Ghost2Prefab.GetComponent<GhostController2>().Position(20, 0);
+            yield return new WaitForSeconds(0.7f);
+        }
+        yield return new WaitForSeconds(1);
+
+        random = Random.Range(2, 8);
+        //FlyEye2‚ğ4‘Ì¶¬
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject FlyEye2Prefab = Instantiate(flyEye2Prefab);
+            FlyEye2Prefab.transform.position = new Vector2(20 + i * 4, random);
+        }
+        yield return new WaitForSeconds(1.3f);
+
+        random = Random.Range(3, 8);
+        //FlyEye2‚ğ4‘Ì¶¬
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject FlyEye2Prefab = Instantiate(flyEye2Prefab);
+            FlyEye2Prefab.transform.position = new Vector2(20 + i * 4, random);
+        }
+        yield return new WaitForSeconds(1.3f);
+
+        random = Random.Range(3, 8);
+        //FlyEye2‚ğ4‘Ì¶¬
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject FlyEye2Prefab = Instantiate(flyEye2Prefab);
+            FlyEye2Prefab.transform.position = new Vector2(20 + i * 4, random);
+        }
+        yield return new WaitForSeconds(1.3f);
+
+        //Ghost2‚ğƒ‰ƒ“ƒ_ƒ€‚ÈêŠ‚É5‘Ì¶¬
+        for (int i = 0; i < 5; i++)
+        {
+            random = Random.Range(-8, 8);
+            GameObject Ghost2Prefab = Instantiate(ghost2Prefab);
+            Ghost2Prefab.transform.position = new Vector2(20, 0);
+            Ghost2Prefab.GetComponent<GhostController2>().Position(20, random);
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        //Bat‚ğ10‘Ì¶¬
+        for (int i = 0; i < 15; i++)
+        {
+            random = Random.Range(-8, 8);
+            GameObject BatPrefab = Instantiate(batPrefab);
+            BatPrefab.transform.position = new Vector2(20 + i * 1, random);
+        }
+        yield return new WaitForSeconds(4);
+
+        random = Random.Range(2, 8);
+
+        //FlyEye‚ğ4‘Ì¶¬
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject FlyEye2Prefab = Instantiate(flyEye2Prefab);
+            FlyEye2Prefab.transform.position = new Vector2(20 + i * 4, random);
+        }
+        yield return new WaitForSeconds(1.3f);
+
+        random = Random.Range(2, 8);
+        //FlyEye‚ğ4‘Ì¶¬
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject FlyEye2Prefab = Instantiate(flyEye2Prefab);
+            FlyEye2Prefab.transform.position = new Vector2(20 + i * 4, random);
+        }
+        yield return new WaitForSeconds(1.3f);
+
+        random = Random.Range(2, 8);
+        //FlyEye‚ğ4‘Ì¶¬
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject FlyEye2Prefab = Instantiate(flyEye2Prefab);
+            FlyEye2Prefab.transform.position = new Vector2(20 + i * 4, random);
+        }
+        yield return new WaitForSeconds(1);
+
+        //ƒ{ƒX“G
+        yield return new WaitForSeconds(5);
+
+        GameObject SlimeBossPrefab = Instantiate(slimeBossPrefab);
+        SlimeBossPrefab.transform.position = new Vector2(28, 2);
+
+
         /*
          * //Ghost‚ğ“ñ‘Ì¶¬
         for (int i = 0; i < 2; i++)

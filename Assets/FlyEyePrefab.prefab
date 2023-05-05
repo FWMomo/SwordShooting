@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAtackPrefab: {fileID: 3308122445180476493, guid: 4e096610030dc0c4ea665345315a0dfd, type: 3}
+  knight: {fileID: 0}
 --- !u!95 &-2799065217137697134
 Animator:
   serializedVersion: 5

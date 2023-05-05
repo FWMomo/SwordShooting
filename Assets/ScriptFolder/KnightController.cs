@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class KnightController : MonoBehaviour
 {
+    GameObject uIController;
 
     //audio
     public AudioSource audioSE;
@@ -16,16 +17,16 @@ public class KnightController : MonoBehaviour
     //時間取得
     private float time = 0;
     //HP設定
-    private int hp = 1;
+    private int hp = 3;
     //残機
     public int life = 1;
     //移動速度
-    private float velocity = 6F;
+    private float velocity = 10F;
     //これに移動速度を入れる
     private float velocityX = 0;
     private float velocityY = 0;
     //攻撃力増加割合
-    public int powerUpGradeRate = 1;
+    public float powerUpGradeRate = 0;
 
     //弾丸のプレハブ設定
 
@@ -34,11 +35,11 @@ public class KnightController : MonoBehaviour
     //高威力・低レート・当たり判定大
     public GameObject knightSwordPrefab;
     //攻撃速度
-    private float knightSwordAtackTime = 0.3f;
+    private float knightSwordAtackTime = 0.35f;
     //弾丸の速度
     private float knightSwordVelocityX = 20;
     //弾丸の攻撃力
-    public int knightSwordPower = 3;
+    public float knightSwordPower = 2;
 
     //低威力・高レート・当たり判定小
     public GameObject knightKnifePrefab;
@@ -47,9 +48,10 @@ public class KnightController : MonoBehaviour
     //弾丸の速度
     private float knightKnifeVelocityX = 40;
     //弾丸の攻撃力
-    public int knightKnifePower = 1;
+    public float knightKnifePower = 1;
 
-
+    //装備している武器の種類用
+    public int weaponType = 0;
 
     //GameOver用のテキスト
     GameObject gameOverText;
@@ -65,6 +67,8 @@ public class KnightController : MonoBehaviour
 
         this.myRigidbody = GetComponent<Rigidbody2D>();
         gameOverText = GameObject.Find("GameOverText");
+
+        uIController = GameObject.Find("UIController");
     }
 
     // Update is called once per frame
@@ -119,7 +123,7 @@ public class KnightController : MonoBehaviour
         if (knightSword && Input.GetMouseButton(0) && time >= knightSwordAtackTime)
         {
             //撃つたびにパワーをアップデート
-            knightSwordPower = 3 * powerUpGradeRate;
+            knightSwordPower = 2 + (2 * powerUpGradeRate);
             //弾の生成
             GameObject KnightSword = Instantiate(knightSwordPrefab);
             //弾の出現位置の調整
@@ -133,7 +137,7 @@ public class KnightController : MonoBehaviour
         else if (knightKnife && Input.GetMouseButton(0) && time >= knightKnifeAtackTime)
         {
             //撃つたびにパワーをアップデート
-            knightKnifePower = 1 * powerUpGradeRate;
+            knightKnifePower = 1 + (1 * powerUpGradeRate);
             Debug.Log(knightKnifePower);
             //弾の生成
             GameObject KnightKnife = Instantiate(knightKnifePrefab);
@@ -165,6 +169,8 @@ public class KnightController : MonoBehaviour
         {
             this.knightSword = true;
             this.knightKnife = false;
+            weaponType = 0;
+            uIController.GetComponent<UIController>().weaponChecker = true;
             Destroy(other.gameObject);
         }
 
@@ -173,6 +179,8 @@ public class KnightController : MonoBehaviour
         {
             this.knightSword = false;
             this.knightKnife = true;
+            weaponType = 1;
+            uIController.GetComponent<UIController>().weaponChecker = true;
             Destroy(other.gameObject);
         }
 

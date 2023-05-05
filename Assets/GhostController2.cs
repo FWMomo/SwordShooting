@@ -12,16 +12,19 @@ public class GhostController2 : MonoBehaviour
     private float speedX = 0;
     private float speedY = 0;
     //“G‚Ì‘Ì—Í
-    private int hp = 2;
+    private float hp = 3;
     //•KE‹Z—p;
     GameObject energy;
     //•KE‹Zƒ`ƒƒ[ƒW—¦
-    private int point = 1;
+    public int point = 2;
     //Œ•‚ÌUŒ‚—Í‚ğŠi”[
     public GameObject knight;
-    private int knightSwordPower;
-    private int knightKnifePower;
-    //
+    private float knightSwordPower;
+    private float knightKnifePower;
+    //‰ŠúˆÊ’uŠi”[—p
+    public float positionX = 0;
+    public float positionY = 0;
+
     private float time = 0;
 
     // Start is called before the first frame update
@@ -37,10 +40,10 @@ public class GhostController2 : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        speedX = 20 + speedRate * time;
+        speedX = speedRate * time;
         speedY = 2 * Mathf.Sin(2 * Mathf.PI * f * time);
         //ˆÚ“®‘¬“x
-        this.transform.position = new Vector3(speedX, speedY, 0);
+        this.transform.position = new Vector3(positionX + speedX, positionY + speedY, 0);
         //‰æ–Ê’[‚ÅÁ‹
         if (this.transform.position.x < deadLine)
         {
@@ -52,6 +55,12 @@ public class GhostController2 : MonoBehaviour
             energy.GetComponent<EnergyController>().EnergyCharger(point);
             Destroy(this.gameObject);
         }
+    }
+
+    public void Position(float positionX, float positionY)
+    {
+        this.positionX = positionX;
+        this.positionY = positionY;
     }
 
     //–¡•û‚Ì’e‚Æ‚ÌÚG”»’è

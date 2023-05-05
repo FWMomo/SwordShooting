@@ -10,7 +10,7 @@ public class FlyEyeController : MonoBehaviour
     private float speedX = -6;
     private float speedY = 1;
     //“G‚Ì‘Ì—Í
-    private int hp = 1;
+    private float hp = 2;
     //’eƒvƒŒƒnƒu
     public GameObject enemyAtackPrefab;
     //UŒ‚ŠÔŠu
@@ -26,8 +26,8 @@ public class FlyEyeController : MonoBehaviour
     private int point = 1;
     //Œ•‚ÌUŒ‚—Í‚ğŠi”[
     public GameObject knight;
-    private int knightSwordPower;
-    private int knightKnifePower;
+    private float knightSwordPower;
+    private float knightKnifePower;
 
     // Start is called before the first frame update
     void Start()

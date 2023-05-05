@@ -2,22 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkeltonController : MonoBehaviour
+public class FlyEye2Controller : MonoBehaviour
 {
     //Á‹ˆÊ’u
     private float deadLine = -20;
-
     //ˆÚ“®‘¬“x
-    private float speed = -5;
+    private float speedX = -6;
+    private float speedY = 1;
     //“G‚Ì‘Ì—Í
-    private float hp = 60;
-    //UŒ‚Ši”[
-    public GameObject enemyAtackPrefab2;
+    private float hp = 2;
+    //’eƒvƒŒƒnƒu
+    public GameObject enemyAtackPrefab;
+    //‰Œ‚‚Ü‚Å‚ÌŠÔ
+    private float firstAtackTime = 0.4f;
 
-    //•KE‹Z—p
+
     GameObject energy;
     //•KE‹Zƒ`ƒƒ[ƒW—¦
-    private int point = 15;
+    private int point = 1;
     //Œ•‚ÌUŒ‚—Í‚ğŠi”[
     public GameObject knight;
     private float knightSwordPower;
@@ -26,6 +28,8 @@ public class SkeltonController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(Atack());
+
         energy = GameObject.Find("Energy");
         knight = GameObject.Find("Knight");
         this.knightSwordPower = knight.GetComponent<KnightController>().knightSwordPower;
@@ -35,33 +39,24 @@ public class SkeltonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ˆÚ“®‘¬“x
-        transform.Translate(this.speed * Time.deltaTime, 0, 0);
+        //ˆÚ“®
+        this.transform.Translate(speedX * Time.deltaTime, 0, 0);
 
-
-        if (this.transform.position.x <= 14 && this.speed != 0)
-        {
-            StartCoroutine(Atack());
-        }
-
-        //‰æ–Ê’[‚Å”j‰ó
+        //‰æ–Ê’[‚ÅÁ‹
         if (this.transform.position.x < deadLine)
         {
             Destroy(gameObject);
         }
     }
-    
+
     IEnumerator Atack()
     {
-        this.speed = 0;
-        for(int i = 0; i < 6; i++)
+        yield return new WaitForSeconds(firstAtackTime);
+        for (int i = 0; i < 5; i++)
         {
-            for (int j = -1; j < 6; j++)
-            {
-                GameObject EnemyAtackPrefab = Instantiate(enemyAtackPrefab2);
-                EnemyAtackPrefab.transform.position = new Vector2(this.transform.position.x, this.transform.position.y);
-                EnemyAtackPrefab.GetComponent<EnemyShotController2>().SetSpeed(-10, -4 + 2 * j);
-            }
+            GameObject EnemyAtackPrefab = Instantiate(enemyAtackPrefab);
+            EnemyAtackPrefab.transform.position = new Vector2(this.transform.position.x, this.transform.position.y);
+            EnemyAtackPrefab.GetComponent<EnemyShotController2>().SetSpeed(-10, -2);
             yield return new WaitForSeconds(3);
         }
     }
@@ -83,6 +78,7 @@ public class SkeltonController : MonoBehaviour
         {
             //”í’e‚Ì“xUŒ‚—Í‚ğ‘ª‚é
             this.knightKnifePower = knight.GetComponent<KnightController>().knightKnifePower;
+
             this.hp -= this.knightKnifePower;
             Destroy(other.gameObject);
         }
@@ -93,5 +89,5 @@ public class SkeltonController : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
 }
+
