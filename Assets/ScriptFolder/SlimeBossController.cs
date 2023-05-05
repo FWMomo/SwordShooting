@@ -16,7 +16,7 @@ public class SlimeBossController : MonoBehaviour
     //ˆÚ“®‘¬“x
     private float speed = -5;
     //“G‚Ì‘Ì—Í
-    private float hp = 10;
+    private float hp = 430;
     //UŒ‚Ši”[
     public GameObject enemyAtackPrefab2;
 
