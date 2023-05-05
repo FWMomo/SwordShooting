@@ -26,7 +26,7 @@ public class EnemyGenelator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!knight.GetComponent<KnightController>().isGameOver)
+        if (knight.GetComponent<KnightController>().isGameOver)
         {
             Destroy(this.gameObject);
         }

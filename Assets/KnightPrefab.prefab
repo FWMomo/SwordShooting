@@ -111,14 +111,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1713665603673517287}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
@@ -136,14 +136,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b26906bd7aeb8554aa8743023c07c001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGameOver: 0
   audioSE: {fileID: 0}
   a1: {fileID: 0}
   a2: {fileID: 0}
-  life: 1
+  hp: 1
   powerUpGradeRate: 0
   knightSwordPrefab: {fileID: 1094361354467315018, guid: 5b545798c9825914e82fb0c2f1fc7b5d, type: 3}
   knightSwordPower: 2
   knightKnifePrefab: {fileID: 7346819365871565148, guid: c6dd2eb687eca764dbf8351159ba2a16, type: 3}
   knightKnifePower: 1
+  weaponType: 0
   knightSword: 1
   knightKnife: 0

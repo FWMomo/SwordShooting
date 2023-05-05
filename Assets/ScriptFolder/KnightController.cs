@@ -8,7 +8,7 @@ public class KnightController : MonoBehaviour
 {
     GameObject uIController;
 
-
+    GameObject pressEnterText;
     public bool isGameOver = false;
     //audio
     public AudioSource audioSE;
@@ -65,7 +65,7 @@ public class KnightController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        pressEnterText = GameObject.Find("PressEnterText");
         this.myRigidbody = GetComponent<Rigidbody2D>();
         gameOverText = GameObject.Find("GameOverText");
 
@@ -75,105 +75,111 @@ public class KnightController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //移動
-        this.myRigidbody.velocity = new Vector2(velocityX, velocityY);
-        /*
-        //画面端に到達したら速度０にする
-        if(this.transform.position.x >= 17 && velocityX >= 0)
+        if(isGameOver == false)
         {
-            velocityX = 0;
-        }
-        if (this.transform.position.x <= -17 && velocityX <= 0)
-        {
-            velocityX = 0;
-        }
-        
-        if (this.transform.position.y >= 9.5 && velocityY >= 0)
-        {
-            velocityY = 0;
-        }
-        if (this.transform.position.y <= -6 && velocityY <= 0)
-        {
-            velocityY = 0;
-        }
-        */
-        //右移動
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            velocityX += velocity;
-        }
-        if (Input.GetKeyUp(KeyCode.D))
-        {
-                velocityX -= velocity;
-        }
+            //移動
+            this.myRigidbody.velocity = new Vector2(velocityX, velocityY);
+            /*
+            //画面端に到達したら速度０にする
+            if(this.transform.position.x >= 17 && velocityX >= 0)
+            {
+                velocityX = 0;
+            }
+            if (this.transform.position.x <= -17 && velocityX <= 0)
+            {
+                velocityX = 0;
+            }
 
-        //左移動
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            velocityX -= velocity;
-        }
-        if (Input.GetKeyUp(KeyCode.A))
-        {
+            if (this.transform.position.y >= 9.5 && velocityY >= 0)
+            {
+                velocityY = 0;
+            }
+            if (this.transform.position.y <= -6 && velocityY <= 0)
+            {
+                velocityY = 0;
+            }
+            */
+            //右移動
+            if (Input.GetKeyDown(KeyCode.D))
+            {
                 velocityX += velocity;
-        }
+            }
+            if (Input.GetKeyUp(KeyCode.D))
+            {
+                velocityX -= velocity;
+            }
 
-        //上移動
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            velocityY += velocity;
-        }
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-                velocityY -= velocity;
-        }
-        //下移動
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            velocityY -= velocity;
-        }
-        if (Input.GetKeyUp(KeyCode.S))
-        {
+            //左移動
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                velocityX -= velocity;
+            }
+            if (Input.GetKeyUp(KeyCode.A))
+            {
+                velocityX += velocity;
+            }
+
+            //上移動
+            if (Input.GetKeyDown(KeyCode.W))
+            {
                 velocityY += velocity;
+            }
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                velocityY -= velocity;
+            }
+            //下移動
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                velocityY -= velocity;
+            }
+            if (Input.GetKeyUp(KeyCode.S))
+            {
+                velocityY += velocity;
+            }
+
+            //攻撃
+            time += Time.deltaTime;
+
+            //KnightSword
+            if (knightSword && Input.GetMouseButton(0) && time >= knightSwordAtackTime)
+            {
+                //撃つたびにパワーをアップデート
+                knightSwordPower = 2 + (2 * powerUpGradeRate);
+                //弾の生成
+                GameObject KnightSword = Instantiate(knightSwordPrefab);
+                //弾の出現位置の調整
+                KnightSword.transform.position = new Vector2(this.gameObject.transform.position.x + 0.4f, this.gameObject.transform.position.y - 0.5f);
+                //弾に速度を与える
+                KnightSword.GetComponent<Rigidbody2D>().velocity = new Vector2(knightSwordVelocityX, 0);
+                //timeをリセット
+                time = 0;
+            }
+            //KnightKnife
+            else if (knightKnife && Input.GetMouseButton(0) && time >= knightKnifeAtackTime)
+            {
+                //撃つたびにパワーをアップデート
+                knightKnifePower = 1 + (1 * powerUpGradeRate);
+                Debug.Log(knightKnifePower);
+                //弾の生成
+                GameObject KnightKnife = Instantiate(knightKnifePrefab);
+                //弾の出現位置の調整
+                KnightKnife.transform.position = new Vector2(this.gameObject.transform.position.x + 0.4f, this.gameObject.transform.position.y - 0.5f);
+                //弾に速度を与える
+                KnightKnife.GetComponent<Rigidbody2D>().velocity = new Vector2(knightKnifeVelocityX, 0);
+                //timeをリセット
+                time = 0;
+            }
         }
 
-        //攻撃
-        time += Time.deltaTime;
 
-        //KnightSword
-        if (knightSword && Input.GetMouseButton(0) && time >= knightSwordAtackTime)
+        //エンターでタイトルに戻る判定
+        if (hp <= 0 || isGameOver == true)
         {
-            //撃つたびにパワーをアップデート
-            knightSwordPower = 2 + (2 * powerUpGradeRate);
-            //弾の生成
-            GameObject KnightSword = Instantiate(knightSwordPrefab);
-            //弾の出現位置の調整
-            KnightSword.transform.position = new Vector2(this.gameObject.transform.position.x + 0.4f, this.gameObject.transform.position.y - 0.5f);
-            //弾に速度を与える
-            KnightSword.GetComponent<Rigidbody2D>().velocity = new Vector2(knightSwordVelocityX, 0);
-            //timeをリセット
-            time = 0;
-        }
-        //KnightKnife
-        else if (knightKnife && Input.GetMouseButton(0) && time >= knightKnifeAtackTime)
-        {
-            //撃つたびにパワーをアップデート
-            knightKnifePower = 1 + (1 * powerUpGradeRate);
-            Debug.Log(knightKnifePower);
-            //弾の生成
-            GameObject KnightKnife = Instantiate(knightKnifePrefab);
-            //弾の出現位置の調整
-            KnightKnife.transform.position = new Vector2(this.gameObject.transform.position.x + 0.4f, this.gameObject.transform.position.y - 0.5f);
-            //弾に速度を与える
-            KnightKnife.GetComponent<Rigidbody2D>().velocity = new Vector2(knightKnifeVelocityX, 0);
-            //timeをリセット
-            time = 0;
-        }
-
-        if (hp <= 0 && Input.GetKeyDown(KeyCode.Return))
-        {
-            Debug.Log("yes");
-            SceneManager.LoadScene("TitleScene");
-
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                SceneManager.LoadScene("TitleScene");
+            }
         }
 
     }
@@ -210,12 +216,16 @@ public class KnightController : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if (hp <= 0 && !isGameOver)
+        if (hp <= 0 && isGameOver == false)
         {
-
-            gameOverText.GetComponent<Text>().text = "GameOver";
-            this.GetComponent<SpriteRenderer>().material.color = new Color32(0, 0, 0, 0);
-            isGameOver = false;
+            GameOver("GameOver");
         }
+    }
+    public void GameOver(string gameOver)
+    {
+        gameOverText.GetComponent<Text>().text = gameOver;
+        pressEnterText.GetComponent<Text>().text = "Press Enter to Reset";
+        this.GetComponent<SpriteRenderer>().material.color = new Color32(0, 0, 0, 0);
+        isGameOver = true;
     }
 }

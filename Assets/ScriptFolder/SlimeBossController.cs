@@ -16,7 +16,7 @@ public class SlimeBossController : MonoBehaviour
     //ˆÚ“®‘¬“x
     private float speed = -5;
     //“G‚Ì‘Ì—Í
-    private float hp = 450;
+    private float hp = 10;
     //UŒ‚Ši”[
     public GameObject enemyAtackPrefab2;
 
@@ -81,7 +81,7 @@ public class SlimeBossController : MonoBehaviour
             yield return new WaitForSeconds(12);
 
         }
-        while (hp <= 0) ;
+        while (true) ;
 
     }
 
@@ -166,15 +166,8 @@ public class SlimeBossController : MonoBehaviour
         //HP‚ªƒ[ƒ‚É‚È‚Á‚½‚É‘ÎÛ‚ğÁ‚·
         if (hp <= 0)
         {
-            energy.GetComponent<EnergyController>().EnergyCharger(point);
-            this.GetComponent<SpriteRenderer>().material.color = new Color32(0, 0, 0, 0);
-            knight.GetComponent<KnightController>().isGameOver = false;
-            clearText.GetComponent<Text>().text = "GameClear!";
-            pressEnterText.GetComponent<Text>().text = "Press Enter to Reset";
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                SceneManager.LoadScene("TitleScene");
-            }
+            knight.GetComponent<KnightController>().GameOver("GameClear!");
+            Destroy(this.gameObject);
         }
     }
 
