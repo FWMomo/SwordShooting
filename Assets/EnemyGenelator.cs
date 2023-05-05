@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyGenelator : MonoBehaviour
 {
     //ƒvƒŒƒnƒuŠi”[
+    public GameObject knight;
     public GameObject batPrefab;
     public GameObject ghostPrefab;
     public GameObject flyEyePrefab;
@@ -18,13 +19,17 @@ public class EnemyGenelator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        knight = GameObject.Find("Knight");
         StartCoroutine(Genelate());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!knight.GetComponent<KnightController>().isGameOver)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     IEnumerator Genelate()

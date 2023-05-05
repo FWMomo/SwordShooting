@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SlimeBossController : MonoBehaviour
 {
+    //ÉNÉäÉAâÊñ 
+    GameObject clearText;
+    GameObject pressEnterText;
+
     //è¡ãéà íu
     private float deadLine = -20;
 
     //à⁄ìÆë¨ìx
     private float speed = -5;
     //ìGÇÃëÃóÕ
-    private float hp = 500;
+    private float hp = 450;
     //çUåÇäiî[
     public GameObject enemyAtackPrefab2;
 
@@ -27,6 +32,8 @@ public class SlimeBossController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        clearText = GameObject.Find("ClearText");
+        pressEnterText = GameObject.Find("PressEnterText");
         energy = GameObject.Find("Energy");
         knight = GameObject.Find("Knight");
         this.knightSwordPower = knight.GetComponent<KnightController>().knightSwordPower;
@@ -74,7 +81,7 @@ public class SlimeBossController : MonoBehaviour
             yield return new WaitForSeconds(12);
 
         }
-        while (true);
+        while (hp <= 0) ;
 
     }
 
@@ -160,7 +167,14 @@ public class SlimeBossController : MonoBehaviour
         if (hp <= 0)
         {
             energy.GetComponent<EnergyController>().EnergyCharger(point);
-            Destroy(this.gameObject);
+            this.GetComponent<SpriteRenderer>().material.color = new Color32(0, 0, 0, 0);
+            knight.GetComponent<KnightController>().isGameOver = false;
+            clearText.GetComponent<Text>().text = "GameClear!";
+            pressEnterText.GetComponent<Text>().text = "Press Enter to Reset";
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                SceneManager.LoadScene("TitleScene");
+            }
         }
     }
 

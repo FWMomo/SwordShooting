@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyShotController2 : MonoBehaviour
 {
+    GameObject knight;
     public float speedX = 0;
     private float deadLine = -20;
     public float numY = 0;
@@ -11,12 +12,16 @@ public class EnemyShotController2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        knight = GameObject.Find("Knight");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (knight.GetComponent<KnightController>().hp <= 0)
+        {
+            Destroy(this.gameObject);
+        }
         //ˆÚ“®‘¬“x
         transform.Translate(this.speedX * Time.deltaTime, this.speedY * Time.deltaTime , 0);
         //‰æ–Ê’[‚És‚Á‚½‚çÁ‹Ž
