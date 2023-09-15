@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class EnergyController : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class EnergyController : MonoBehaviour
     public int playerLevel = 1;
 
     public GameObject uIController;
+    public Text levelText;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +38,7 @@ public class EnergyController : MonoBehaviour
             //プレイヤーのレベルを上げて攻撃力を増加させる
             knight.GetComponent<KnightController>().powerUpGradeRate += 0.1f;
             playerLevel++;
+            levelText.text = "Level : " + playerLevel.ToString();
             energy = transform.position.x - chargeRate * energy;
             this.transform.position = new Vector2(-4 + transform.position.x -energy, this.transform.position.y);
             uIController.GetComponent<UIController>().weaponChecker = true;

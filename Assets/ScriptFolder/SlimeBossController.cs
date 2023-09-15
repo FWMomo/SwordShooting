@@ -166,7 +166,7 @@ public class SlimeBossController : MonoBehaviour
         //HPがゼロになった時に対象を消す
         if (hp <= 0)
         {
-            knight.GetComponent<KnightController>().GameOver("GameClear!");
+            knight.GetComponent<KnightController>().GameOver("GameClear!見事ニンジンを取り返したぞ！！");
             Destroy(this.gameObject);
         }
     }
